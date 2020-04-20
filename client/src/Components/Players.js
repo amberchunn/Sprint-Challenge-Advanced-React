@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Flags from './Flags';
 import { useLocalStore } from '../Hooks/useLocalStore';
+import { fetchPlayers } from '../services';
 
 class Players extends Component {
 	constructor() {
@@ -16,7 +17,6 @@ class Players extends Component {
 				this.setState({ data });
 			});
 	}
-
 	render() {
 		// TODO: Create logic to filter players list by selected country
 
@@ -41,7 +41,9 @@ class Players extends Component {
 			<div className="players-cont">
 				<h1>Players</h1>
 				<Flags country={this.state.data.country} />
-				<ul>{playerList}</ul>
+				<ul className="player-list" data-testid="">
+					{playerList}
+				</ul>
 			</div>
 		);
 	}
